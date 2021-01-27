@@ -3,7 +3,7 @@ import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
 import {Link} from 'react-router-dom';
-import {signInWithGoogle, auth, handleLogin} from './../../firebase/util';
+import {signInWithGoogle, auth, handleLogin, signInWithFacebook} from './../../firebase/util';
 import './styles.scss';
 
 
@@ -86,7 +86,7 @@ class SignIn extends Component {
                         </div>
                         <div className="socialSignIn">
                             <div className="row">
-                                <Button onClick ={handleLogin}>
+                                <Button onClick ={signInWithFacebook}>
                                     Sign in with facebook
                                 </Button>
                             </div>
