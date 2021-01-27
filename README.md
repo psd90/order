@@ -1,4 +1,4 @@
-This is my first project (solo) since graduating from Northcoders.
+This is my first project since graduating from Northcoders.
 
 I will be creating a simple food ordering site/app to prebook food. 
 The chef should be able to easily edit the menu.
