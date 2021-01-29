@@ -1,35 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
+import {signInUser, signInWithFacebook, signInWithGoogle, resetAuthForms} from './../../redux/User/user.actions';
 import {Link, withRouter} from 'react-router-dom';
-import {signInWithGoogle, auth, handleLogin, signInWithFacebook} from './../../firebase/util';
 import './styles.scss';
 
-
+const mapState = ({user}) => ({
+    signInSuccess: user.signInSuccess
+})
 const SignIn = props => {
-    
+    const {signInSuccess} = useSelector(mapState);
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+   
+    useEffect(() => {
+        if (signInSuccess){
+            resetForm();
+            dispatch(resetAuthForms());
+            props.history.push('/');
+        }
+    }, [signInSuccess]);
+    
     const resetForm = () => {
         setEmail('');
         setPassword('');
-    }
+    } 
 
 
     const handleSubmit = async e => {
         e.preventDefault();
-
-        try{
-            await auth.signInWithEmailAndPassword(email, password);
-            resetForm();
-            props.history('/');
-
-        }catch(err){
-            console.log(err)
-        }
+        dispatch(signInUser({email, password}));
+            
     }
 
+    const handleSignInGoogle = () => {
+        dispatch(signInWithGoogle());
+    }
+
+    const handleSignInFacebook = () => {
+        dispatch(signInWithFacebook());
+    }
 
         const configAuthWrapper = {
             headline: 'Login'
@@ -66,14 +79,14 @@ const SignIn = props => {
 
                         <div className="socialSignIn">
                             <div className="row">
-                                <Button onClick ={signInWithGoogle}>
+                                <Button onClick ={handleSignInGoogle}>
                                     Sign in with google
                                 </Button>
                             </div>
                         </div>
                         <div className="socialSignIn">
                             <div className="row">
-                                <Button onClick ={signInWithFacebook}>
+                                <Button onClick ={handleSignInFacebook}>
                                     Sign in with facebook
                                 </Button>
                             </div>
