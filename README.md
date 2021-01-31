@@ -1,6 +1,6 @@
 This is my first project since graduating from Northcoders.
 
-I will be creating a simple food ordering site/app to prebook food. 
+I will be creating a food ordering application to prebook food. 
 The chef should be able to easily edit the menu.
 <br>
 There will be no payment as it is only to prebook and
