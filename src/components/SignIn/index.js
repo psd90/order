@@ -3,26 +3,26 @@ import {useDispatch, useSelector} from 'react-redux';
 import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
-import {signInUser, signInWithFacebook, signInWithGoogle, resetAuthForms} from './../../redux/User/user.actions';
-import {Link, withRouter} from 'react-router-dom';
+import {emailSignInStart, googleSignInStart, facebookSignInStart} from './../../redux/User/user.actions';
+import {Link, useHistory} from 'react-router-dom';
 import './styles.scss';
 
 const mapState = ({user}) => ({
-    signInSuccess: user.signInSuccess
+    currentUser: user.currentUser
 })
 const SignIn = props => {
-    const {signInSuccess} = useSelector(mapState);
     const dispatch = useDispatch();
+    const history = useHistory();
+    const {currentUser} = useSelector(mapState);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
    
     useEffect(() => {
-        if (signInSuccess){
+        if (currentUser){
             resetForm();
-            dispatch(resetAuthForms());
-            props.history.push('/');
+            history.push('/');
         }
-    }, [signInSuccess]);
+    }, [currentUser]);
     
     const resetForm = () => {
         setEmail('');
@@ -30,18 +30,18 @@ const SignIn = props => {
     } 
 
 
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault();
-        dispatch(signInUser({email, password}));
+        dispatch(emailSignInStart({email, password}));
             
     }
 
-    const handleSignInGoogle = () => {
-        dispatch(signInWithGoogle());
+    const handleGoogleSignIn= () => {
+        dispatch(googleSignInStart());
     }
 
-    const handleSignInFacebook = () => {
-        dispatch(signInWithFacebook());
+    const handleFacebookSignIn = () => {
+        dispatch(facebookSignInStart());
     }
 
         const configAuthWrapper = {
@@ -79,14 +79,14 @@ const SignIn = props => {
 
                         <div className="socialSignIn">
                             <div className="row">
-                                <Button onClick ={handleSignInGoogle}>
+                                <Button onClick ={handleGoogleSignIn}>
                                     Sign in with google
                                 </Button>
                             </div>
                         </div>
                         <div className="socialSignIn">
                             <div className="row">
-                                <Button onClick ={handleSignInFacebook}>
+                                <Button onClick ={handleFacebookSignIn}>
                                     Sign in with facebook
                                 </Button>
                             </div>
@@ -99,4 +99,4 @@ const SignIn = props => {
 }
 
 
-export default withRouter(SignIn);
+export default SignIn;
