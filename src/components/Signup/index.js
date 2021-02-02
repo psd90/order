@@ -45,8 +45,8 @@ const mapState = ({ user }) =>  ({
             setErrors([]);
         }
    
-    const handleFormSubmit = event => {
-        event.preventDefault();
+    const handleFormSubmit = e => {
+        e.preventDefault();
         dispatch(signUpUserStart({
             displayName,
             email,

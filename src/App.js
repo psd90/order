@@ -4,8 +4,10 @@ import { Switch, Route} from 'react-router-dom';
 import {checkUserSession} from './redux/User/user.actions';
 //hoc
 import WithAuth from './hoc/withAuth';
+import WithAdminAuth from './hoc/withAdminAuth';
 
-
+//components
+import AdminToolbar from './components/AdminToolbar';
 //layouts
 import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
@@ -15,6 +17,7 @@ import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
+import Admin from './pages/Admin';
 import './default.scss';
 
 
@@ -27,6 +30,7 @@ dispatch(checkUserSession());
 
   return (
     <div className="App">
+      <AdminToolbar />
      <Switch>
       <Route exact path="/" render={() =>(
         <HomepageLayout>
@@ -55,6 +59,13 @@ dispatch(checkUserSession());
         <Dashboard />
       </MainLayout>
       </WithAuth>
+      )} />
+      <Route path="/admin" render ={() => (
+        <WithAdminAuth>
+      <MainLayout>
+        <Admin />
+      </MainLayout>
+      </WithAdminAuth>
       )} />
       </Switch>
     </div>
