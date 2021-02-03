@@ -11,6 +11,8 @@ import AdminToolbar from './components/AdminToolbar';
 //layouts
 import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
+import AdminLayout from './layouts/AdminLayout';
+import DashboardLayout from './layouts/DashboardLayout';
 //pages
 import Homepage from './pages/Homepage';
 import Registration from './pages/Registration';
@@ -55,16 +57,16 @@ dispatch(checkUserSession());
       )} />
       <Route path="/dashboard" render ={() => (
       <WithAuth>
-        <MainLayout>
+        <DashboardLayout>
         <Dashboard />
-      </MainLayout>
+      </DashboardLayout>
       </WithAuth>
       )} />
       <Route path="/admin" render ={() => (
-        <WithAdminAuth>
-      <MainLayout>
+      <WithAdminAuth>
+      <AdminLayout>
         <Admin />
-      </MainLayout>
+      </AdminLayout>
       </WithAdminAuth>
       )} />
       </Switch>
