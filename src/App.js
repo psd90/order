@@ -15,6 +15,7 @@ import AdminLayout from './layouts/AdminLayout';
 import DashboardLayout from './layouts/DashboardLayout';
 //pages
 import Homepage from './pages/Homepage';
+import Search from './pages/Search';
 import Registration from './pages/Registration';
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
@@ -39,6 +40,16 @@ dispatch(checkUserSession());
           <Homepage />
         </HomepageLayout>
       )} />
+      <Route exact path ="/search" render={() => (
+        <MainLayout>
+          <Search />
+        </MainLayout>
+      )}/>
+      <Route path ="/search/:filterType" render={() => (
+        <MainLayout>
+          <Search />
+        </MainLayout>
+      )}/>
       <Route path="/registration" render={() => (
         <MainLayout>
           <Registration />

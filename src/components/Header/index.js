@@ -23,6 +23,21 @@ const Header = props => {
                     <img src={Logo} alt="Dhillons"/>
                     </Link>
                 </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/search">
+                                Searach
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/">
+                                Home
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+
                 <div className="callToActions">
 
                     {currentUser && (
