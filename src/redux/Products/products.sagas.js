@@ -1,22 +1,14 @@
 import {auth} from './../../firebase/util';
-import { takeLatest, put, all, call } from 'redux-saga/effects';
-import {handleAddProduct, handleFetchProducts, handleDeleteProduct} from './products.helpers';
+import { takeLatest, put, all, call, take } from 'redux-saga/effects';
+import {handleAddProduct, handleFetchProducts, handleDeleteProduct, handleFetchProduct} from './products.helpers';
 import productsTypes from './products.types';
-import { setProducts, fetchProductsStart } from './products.actions';
+import { setProducts, fetchProductsStart, setProduct } from './products.actions';
 
-export function* addProduct({ payload: {
-    productCategory,
-    productName,
-    productThumbnail,
-    productPrice
-}}) {
+export function* addProduct({ payload }) {
 try {
     const timestamp = new Date();
     yield handleAddProduct({
-    productCategory,
-    productName,
-    productThumbnail,
-    productPrice,
+    ...payload,
     productAdminUserUID: auth.currentUser.uid,
     createdDate: timestamp
     })
@@ -32,11 +24,9 @@ export function* onAddProductStart() {
   yield takeLatest(productsTypes.ADD_NEW_PRODUCT_START, addProduct);
 }
 
-export function* fetchProducts({ payload: {
-  filterType
-} }) {
+export function* fetchProducts({ payload }) {
     try {
-      const products = yield handleFetchProducts({filterType});
+      const products = yield handleFetchProducts(payload);
       yield put(
         setProducts(products)
       );
@@ -66,13 +56,27 @@ export function* onDeleteProductStart() {
   yield takeLatest(productsTypes.DELETE_PRODUCT_START, deleteProduct);
 }
 
+export function* fetchProduct({payload}){
+try {
+  const product = yield handleFetchProduct(payload);
+  yield put (
+  setProduct(product)
+  )
+} catch (err) {
+  console.log(err)
+}
+}
 
+export function* onFetchProductStart() {
+  yield takeLatest(productsTypes.FETCH_PRODUCT_START, fetchProduct)
+}
 
 
 export default function* productsSagas() {
   yield all([
     call(onAddProductStart),
     call(onFetchProductsStart),
-    call(onDeleteProductStart)
+    call(onDeleteProductStart),
+    call(onFetchProductStart)
   ])
 }

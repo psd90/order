@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {addProductStart, fetchProductsStart, deleteProductStart} from './../../redux/Products/products.actions';
+import {addProductStart, fetchProductsStart, deleteProductStart, setProduct} from './../../redux/Products/products.actions';
 import Modal from './../../components/Modal';
 import FormInput from './../../components/Forms/FormInput';
 import FormSelect from './../../components/Forms/FormSelect';
 import Button from './../../components/Forms/Button';
+import LoadMore from './../../components/LoadMore';
+import CKEditor from 'ckeditor4-react';
 import './styles.scss';
 
 
@@ -20,6 +22,10 @@ const Admin = props => {
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
+  const [productDesc, setProductDesc] = useState('');
+
+  const {data, queryDoc, isLastPage} = products
+
 
   useEffect(() => {
     dispatch(
@@ -40,7 +46,8 @@ const Admin = props => {
     setProductCategory('mens');
     setProductName('');
     setProductPrice(0);
-    setProductThumbnail('')
+    setProductThumbnail('');
+    setProductDesc('');
   }
 
   const handleSubmit = e => {
@@ -50,10 +57,24 @@ const Admin = props => {
           productCategory,
           productName,
           productPrice,
-          productThumbnail
+          productThumbnail,
+          productDesc
         })
       )
         resetForm();
+  }
+
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        startAfterDoc: queryDoc, 
+        persistProducts: data
+      })
+    )
+
+  }
+  const configLoadMore = {
+    onLoadMoreEvent: handleLoadMore
   }
 
    
@@ -113,7 +134,9 @@ const Admin = props => {
               value={productPrice}
               handleChange={e => setProductPrice(e.target.value)}
             />
-
+            <CKEditor
+            onChange={e => setProductDesc (e.editor.getData())}
+            />
             
 
             <Button type="submit">
@@ -139,7 +162,7 @@ const Admin = props => {
       <td>
         <table className="results" border="0" cellPadding="10" cellSpacing="0">
           <tbody>
-            {products.map((product, index) => {
+            {(Array.isArray(data)) && data.length > 0 && data.map((product, index) => {
               const {
                 productName,
                 productThumbnail,
@@ -171,8 +194,18 @@ const Admin = props => {
       </td>
     </tr>
     <tr>
-      <td>
-
+      <td> 
+        <table border= "0" cellPadding="10" cellSpacing="0">
+          <tbody>
+            <tr>
+            <td>
+            {!isLastPage && (
+              <LoadMore {...configLoadMore}/>
+            )}
+            </td>
+            </tr>
+            </tbody>
+        </table>
       </td>
     </tr>
    
@@ -182,7 +215,7 @@ const Admin = props => {
 </div>
 
 
-      </div>
+</div>
   );
 }
 
