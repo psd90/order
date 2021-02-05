@@ -22,6 +22,7 @@ import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
 import './default.scss';
 
 
@@ -56,8 +57,11 @@ dispatch(checkUserSession());
           <ProductDetails />
         </MainLayout>
       )}/>
-
-
+      <Route path ="/cart" render={() => (
+        <MainLayout>
+          <Cart />
+        </MainLayout>
+      )}/>
       <Route path="/registration" render={() => (
         <MainLayout>
           <Registration />
