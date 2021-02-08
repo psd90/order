@@ -4,7 +4,7 @@ import './styles.scss';
 const Dashboard = props => {
     return (
     <h1>
-        u smelly 
+       Order
     </h1>
     )
 }
