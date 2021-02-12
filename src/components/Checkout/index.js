@@ -1,25 +1,80 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import { firestore } from './../../firebase/util';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {selectCartItems, selectCartTotal} from './../../redux/Cart/cart.selectors';
+import {selectCartItems, selectCartTotal, selectCartItemsCount} from './../../redux/Cart/cart.selectors';
+import { saveOrderHistory } from './../../redux/Orders/orders.actions';
+import { auth } from './../../firebase/util';
 import {createStructuredSelector} from 'reselect';
 import './styles.scss';
 import Button from './../Forms/Button';
 import Item from './Item';
+import { useEffect, useState } from 'react';
 
+  
+ 
 const mapSate = createStructuredSelector({
     cartItems: selectCartItems,
-    total: selectCartTotal
+    total: selectCartTotal,
+    itemCount: selectCartItemsCount
 })
-
+const handleSaveOrder = order => {
+    return new Promise((resolve, reject) => {
+      firestore
+        .collection('orders')
+        .doc()
+        .set(order)
+        .then(() => {
+          resolve();
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  };
 const errorMessage = 'You have no items, please add some items to your basket' 
-const Checkout = ({}) => {
+const Checkout = () => {
     const history = useHistory();
-    const {cartItems, total} = useSelector(mapSate);
-
-
-    return (
-        <div className="checkout">
+    const dispatch = useDispatch();
+    const {cartItems, total, itemCount} = useSelector(mapSate);
+    
+    useEffect(() => {
+        if (itemCount < 1) {
+            history.push('/dashboard');
+        }
+        
+    }, [itemCount]);
+    
+    
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        const timestamps = new Date();
+        const configOrder = {
+            orderUserID: auth.currentUser.uid,
+            orderUserName: auth.currentUser.displayName,
+            orderCreatedDate: timestamps,
+            orderTotal: total,
+            orderItems: cartItems.map(item => {
+                const { documentID, productThumbnail, productName,
+                    productPrice, quantity } = item;
+                    
+                    return {
+                        documentID,
+                        productThumbnail,
+                        productName,
+                        productPrice,
+                        quantity
+                    };
+                })
+            }
+            handleSaveOrder(configOrder)
+        }
+            
+            
+            console.log(auth)
+            
+            return (
+                <div className="checkout">
             <h1> 
                 Basket
             </h1>
@@ -87,9 +142,11 @@ const Checkout = ({}) => {
                                                 </Button> 
                                             </td>
                                             <td>
-                                                <Button>
+                                            <form onSubmit={handleFormSubmit}>
+                                                <Button type="submit">
                                                     Checkout
                                                 </Button>
+                                            </form>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -108,5 +165,4 @@ const Checkout = ({}) => {
         </div>
     )
 }
-
 export default Checkout;
