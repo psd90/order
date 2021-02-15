@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
-import {emailSignInStart, googleSignInStart, facebookSignInStart} from './../../redux/User/user.actions';
+import {emailSignInStart} from './../../redux/User/user.actions';
 import {Link, useHistory} from 'react-router-dom';
 import './styles.scss';
 
@@ -36,13 +36,7 @@ const SignIn = props => {
             
     }
 
-    const handleGoogleSignIn= () => {
-        dispatch(googleSignInStart());
-    }
-
-    const handleFacebookSignIn = () => {
-        dispatch(facebookSignInStart());
-    }
+    
 
         const configAuthWrapper = {
             headline: 'Login'
@@ -75,23 +69,6 @@ const SignIn = props => {
                                 Forgot your password?
                             </Link>
                         </div>
-
-
-                        <div className="socialSignIn">
-                            <div className="row">
-                                <Button onClick ={handleGoogleSignIn}>
-                                    Sign in with google
-                                </Button>
-                            </div>
-                        </div>
-                        <div className="socialSignIn">
-                            <div className="row">
-                                <Button onClick ={handleFacebookSignIn}>
-                                    Sign in with facebook
-                                </Button>
-                            </div>
-                        </div>
-
                     </form>
                 </div>
              </AuthWrapper>
