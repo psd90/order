@@ -2,8 +2,8 @@ import React from 'react';
 import { firestore } from './../../firebase/util';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {selectCartItems, selectCartTotal, selectCartItemsCount} from './../../redux/Cart/cart.selectors';
-import { saveOrderHistory } from './../../redux/Orders/orders.actions';
+import {selectCartItems, selectCartTotal, selectCartItemsCount,} from './../../redux/Cart/cart.selectors';
+import {clearCart} from './../../redux/Cart/cart.actions'
 import { auth } from './../../firebase/util';
 import {createStructuredSelector} from 'reselect';
 import './styles.scss';
@@ -11,8 +11,7 @@ import Button from './../Forms/Button';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 
-  
- 
+
 const mapSate = createStructuredSelector({
     cartItems: selectCartItems,
     total: selectCartTotal,
@@ -32,6 +31,7 @@ const handleSaveOrder = order => {
         });
     });
   };
+
 const errorMessage = 'You have no items, please add some items to your basket' 
 const Checkout = () => {
     const history = useHistory();
@@ -40,7 +40,7 @@ const Checkout = () => {
     
     useEffect(() => {
         if (itemCount < 1) {
-            history.push('/dashboard');
+            history.push('/confirmation');
         }
         
     }, [itemCount]);
@@ -51,7 +51,6 @@ const Checkout = () => {
         const timestamps = new Date();
         const configOrder = {
             orderUserID: auth.currentUser.uid,
-            orderUserName: auth.currentUser.displayName,
             orderCreatedDate: timestamps,
             orderTotal: total,
             orderItems: cartItems.map(item => {
@@ -66,12 +65,13 @@ const Checkout = () => {
                         quantity
                     };
                 })
+                
             }
+            
             handleSaveOrder(configOrder)
+            dispatch(clearCart())
         }
-            
-            
-            console.log(auth)
+            console.log(cartItems)
             
             return (
                 <div className="checkout">

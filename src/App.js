@@ -23,6 +23,8 @@ import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
+import Confirmation from './pages/Confirmation';
+import Order from './pages/Order';
 import './default.scss';
 
 
@@ -58,10 +60,17 @@ dispatch(checkUserSession());
         </MainLayout>
       )}/>
       <Route path ="/cart" render={() => (
+        <WithAuth>
         <MainLayout>
           <Cart />
         </MainLayout>
+        </WithAuth>
       )}/>
+      <Route path ="/confirmation" render={() =>(
+        <MainLayout>
+          <Confirmation />
+        </MainLayout>
+      )} />
       <Route path="/registration" render={() => (
         <MainLayout>
           <Registration />
@@ -84,6 +93,13 @@ dispatch(checkUserSession());
         <Dashboard />
       </DashboardLayout>
       </WithAuth>
+      )} />
+      <Route path="/order/:orderID" render ={() => (
+        <WithAuth>
+          <DashboardLayout>
+            <Order />
+          </DashboardLayout>
+        </WithAuth>
       )} />
       <Route path="/admin" render ={() => (
       <WithAdminAuth>

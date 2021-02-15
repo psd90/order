@@ -29,7 +29,7 @@ const Header = props => {
                     <ul>
                         <li>
                             <Link to="/search">
-                                Searach
+                                Search
                             </Link>
                         </li>
                         <li>
