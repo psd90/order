@@ -18,7 +18,7 @@ const Admin = props => {
   const {products} = useSelector(mapState)
   const dispatch = useDispatch();
   const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState('mens');
+  const [productCategory, setProductCategory] = useState('curry');
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
@@ -43,7 +43,7 @@ const Admin = props => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory('mens');
+    setProductCategory('curry');
     setProductName('');
     setProductPrice(0);
     setProductThumbnail('');
@@ -102,11 +102,11 @@ const Admin = props => {
             <FormSelect
               label="Category"
               options={[{
-                value: "mens",
-                name: "Mens"
+                value: "curry",
+                name: "Curry"
               }, {
-                value: "womens",
-                name: "Womens"
+                value: "extras",
+                name: "Extras"
               }]}
               handleChange={e => setProductCategory(e.target.value)}
             />

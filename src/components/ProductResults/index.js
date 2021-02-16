@@ -30,31 +30,32 @@ const ProductResults = ({ }) => {
     history.push(`/search/${nextFilter}`);
   }
 
+  
+    const configFilters = {
+      defaultValue: filterType,
+      options : [{
+          name: 'Show all',
+          value: ''
+      }, {
+          name: 'Curry',
+          value: 'curry'
+      }, {
+          name: 'Extras',
+          value: 'extras'
+      }],
+      handleChange: handleFilter
+    }
 
   if (!Array.isArray(data)) return null;
   if (data.length < 1) {
     return (
       <div className="products">
-        <p>
+        <h1>
           No search results.
-        </p>
+        </h1>
+        <FormSelect {...configFilters}/>
       </div>
     );
-  }
-
-  const configFilters = {
-    defaultValue: filterType,
-    options : [{
-        name: 'Show all',
-        value: ''
-    }, {
-        name: 'Mens',
-        value: 'mens'
-    }, {
-        name: 'Womens',
-        value: 'womens'
-    }],
-    handleChange: handleFilter
   }
 
   const handleLoadMore = () => {

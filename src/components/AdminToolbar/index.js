@@ -21,6 +21,11 @@ const AdminToolbar = props => {
                     Admin Hub
                     </Link>
                 </li>
+                <li>
+                    <Link>
+                    Orders
+                    </Link>
+                </li>
             </ul>
         </div>
     )
