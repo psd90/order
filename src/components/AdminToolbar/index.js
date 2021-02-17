@@ -22,7 +22,7 @@ const AdminToolbar = props => {
                     </Link>
                 </li>
                 <li>
-                    <Link>
+                    <Link to="/stats">
                     Orders
                     </Link>
                 </li>

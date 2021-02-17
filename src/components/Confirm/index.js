@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import {useHistory} from 'react-router-dom';
+import Menu from './../../assets/curry.jpg';
 
 const Confirm = props => {
     const history = useHistory();
@@ -9,9 +10,9 @@ const Confirm = props => {
             <div className="wrap">
             <div
                 className="item"
-                // style ={{
-                //     backgroundImage: `url(${Menu})`
-                // }}
+                style ={{
+                    backgroundImage: `url(${Menu})`
+                }}
                 >
                     <h1>
                         Your Order Has Been Submitted

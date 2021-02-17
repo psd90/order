@@ -25,6 +25,7 @@ import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Confirmation from './pages/Confirmation';
 import Order from './pages/Order';
+import Stats from './pages/Stats';
 import './default.scss';
 
 
@@ -105,6 +106,13 @@ dispatch(checkUserSession());
       <WithAdminAuth>
       <AdminLayout>
         <Admin />
+      </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/stats" render ={() => (
+      <WithAdminAuth>
+      <AdminLayout>
+        <Stats />
       </AdminLayout>
       </WithAdminAuth>
       )} />
