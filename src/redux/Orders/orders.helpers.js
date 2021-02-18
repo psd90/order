@@ -61,3 +61,23 @@ export const handleGetOrder = orderID => {
       })
   })
 }
+
+export const handleGetAllOrders = () => {
+return new Promise((resolve, reject) => {
+  firestore.collection('orders')
+.get()
+.then(snap => {
+const data = [
+    ...snap.docs.map(doc => {
+        return {
+            ...doc.data()
+        }
+    })
+]
+resolve({data})
+})
+.catch(err => {
+reject(err)
+})
+})
+}

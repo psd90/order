@@ -34,6 +34,7 @@ const handleSaveOrder = order => {
 
 const errorMessage = 'You have no items, please add some items to your basket' 
 const Checkout = () => {
+    console.log(auth.currentUser)
     const history = useHistory();
     const dispatch = useDispatch();
     const {cartItems, total, itemCount} = useSelector(mapSate);
@@ -71,7 +72,6 @@ const Checkout = () => {
             handleSaveOrder(configOrder)
             dispatch(clearCart())
         }
-            console.log(cartItems)
             
             return (
                 <div className="checkout">
@@ -115,6 +115,7 @@ const Checkout = () => {
                                     <tr key={pos}>
                                         <td>
                                             <Item {...item}/>
+                                            
                                         </td>
                                     </tr>
                                     )

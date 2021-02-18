@@ -1,19 +1,29 @@
 import React from 'react';
 import {firestore} from './../../firebase/util';
+import {useDispatch} from 'react-redux';
 
+  new Promise((resolve, reject) => {
+      firestore.collection('orders')
+    .get()
+    .then(snap => {
+    const data = [
+        ...snap.docs.map(doc => {
+            return {
+                ...doc.data()
+            }
+        })
+    ]
+    console.log(data)
+    return data
+    })
+    .catch(err => {
+    reject(err)
+    })
+    })
+    
 
 
 const AdminOrders = () => {
-firestore.collection('orders')
-.get()
-.then((snap) => {
-    let allOrders = [];
-    snap.forEach((doc) => {
-        allOrders.push(doc.data())
-    })
-    console.log(allOrders)
-    return allOrders;
-})
     return (
         <div className="adminOrders">
             <h1>
