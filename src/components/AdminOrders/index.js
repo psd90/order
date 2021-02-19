@@ -1,34 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {firestore} from './../../firebase/util';
-import {useDispatch} from 'react-redux';
+import OrderCard from './../../components/OrderCard';
 
-  new Promise((resolve, reject) => {
-      firestore.collection('orders')
-    .get()
-    .then(snap => {
-    const data = [
-        ...snap.docs.map(doc => {
-            return {
-                ...doc.data()
-            }
-        })
-    ]
-    console.log(data)
-    return data
-    })
-    .catch(err => {
-    reject(err)
-    })
-    })
-    
 
 
 const AdminOrders = () => {
+    const [orders, setOrders] = useState([])
+
+    useEffect(() => {
+        firestore.collection('orders')
+          .onSnapshot(snapshot => (
+              setOrders(snapshot.docs.map(doc => doc.data()))
+          ))
+    }, [])
+     
     return (
         <div className="adminOrders">
-            <h1>
-                Customer Order Info
-            </h1>
+            {orders.map(({orderTotal, orderUserID, orderItems}) => (
+                <OrderCard 
+                orderTotal = {orderTotal}
+                orderUserID = {orderUserID}
+                orderItems = {orderItems}
+                />
+            ))}
         </div>
     )
 }
