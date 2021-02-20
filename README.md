@@ -1,4 +1,5 @@
-This is my first project since graduating from Northcoders.
+This is my first project <br>
+since graduating from Northcoders.
 
 I will be creating a food ordering application to prebook food. 
 The admin should be able to easily edit the menu and a cut off date 
