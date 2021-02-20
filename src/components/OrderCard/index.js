@@ -5,8 +5,9 @@ import { firestore } from '../../firebase/util';
 
 const OrderCard = ({orderTotal, orderUserID, orderItems}) => {
 
-const productName = orderItems.map(x => x.productName)
-const quantity = orderItems.map(x => x.quantity)
+// const productName = orderItems.map(x => x.productName)
+// const quantity = orderItems.map(x => x.quantity)
+
 const [userData, setUsername] = useState([])
 
 useEffect(()=> {
@@ -16,7 +17,6 @@ useEffect(()=> {
     ))
 }, [])
 const userName = userData.displayName
-console.log(userName)
 
 
 
@@ -28,17 +28,19 @@ console.log(userName)
             <ul>
                 <li>
                     <h1>
-                     OrderTotal £: {orderTotal}
-                    </h1>
-                </li>
-                <li>
-                    <h1>
                         User: {userName}
                     </h1>
                 </li>
+                <li>     
+                {orderItems.map((orderItems)=>{
+                    return (
+                    <div><h1>{orderItems.productName} x {orderItems.quantity}</h1></div>
+                    )}
+                    )}
+                </li>
                 <li>
                     <h1>
-                        {productName} x {quantity}
+                     OrderTotal £: {orderTotal}
                     </h1>
                 </li>
                 <br></br>
