@@ -1,19 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { firestore } from '../../firebase/util';
 
 
 
 const OrderCard = ({orderTotal, orderUserID, orderItems}) => {
+
 const productName = orderItems.map(x => x.productName)
 const quantity = orderItems.map(x => x.quantity)
+const [userData, setUsername] = useState([])
 
-// useEffect(()=> {
-
-//     const user = firestore.collection('users').doc({orderUserID}).get()
-//     .then(()=> {
-//         console.log(user.data())
-//     })
-// }, [])
+useEffect(()=> {
+   firestore.collection('users').doc(`${orderUserID}`)
+    .onSnapshot(snapshot => (
+        setUsername(snapshot.data())
+    ))
+}, [])
+const userName = userData.displayName
+console.log(userName)
 
 
 
@@ -30,7 +33,7 @@ const quantity = orderItems.map(x => x.quantity)
                 </li>
                 <li>
                     <h1>
-                        User: 
+                        User: {userName}
                     </h1>
                 </li>
                 <li>
