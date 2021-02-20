@@ -4,8 +4,8 @@ since graduating from Northcoders.
 I will be creating a food ordering 
 application to prebook food.
 
-I am going to use React. I will also
-use Firebase for admin and user 
+I am going to use React. 
+I will also use Firebase for admin and user 
 verification and storing menu.
 
 I will use Redux  
