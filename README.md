@@ -6,7 +6,7 @@ I will be creating a food ordering <br>
 application to prebook food.
 
 I am going to use React. 
-I will also use Firebase for admin and user <br>
+I will also use Firebase <br>for admin and user <br>
 verification and storing menu.
 
 I will use Redux for state management.
