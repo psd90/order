@@ -8,8 +8,7 @@ I am going to use React.
 I will also use Firebase for admin and user 
 verification and storing menu.
 
-I will use Redux  
-for state management.
+I will use Redux for state management.
 
 
 The admin should be able to easily 
