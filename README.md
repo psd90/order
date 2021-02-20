@@ -8,4 +8,5 @@ I am going to use React, Firebase for admin and user verification
 and storing the upto date menu.
 I will use Redux to learn more about state management.
 <br>
-The admin should be able to see total numbers for individual menu items to prepare and then individual orders for packagining.
+The admin should be able to see total numbers for individual menu 
+items to prepare and then individual orders for packaging.
