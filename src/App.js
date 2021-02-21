@@ -26,6 +26,7 @@ import Cart from './pages/Cart';
 import Confirmation from './pages/Confirmation';
 import Order from './pages/Order';
 import Stats from './pages/Stats';
+import TotalStats from './pages/TotalStats';
 import './default.scss';
 
 
@@ -113,6 +114,13 @@ dispatch(checkUserSession());
       <WithAdminAuth>
       <AdminLayout>
         <Stats />
+      </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/totalStats" render ={() => (
+      <WithAdminAuth>
+      <AdminLayout>
+        <TotalStats />
       </AdminLayout>
       </WithAdminAuth>
       )} />

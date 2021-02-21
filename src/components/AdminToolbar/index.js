@@ -26,6 +26,11 @@ const AdminToolbar = props => {
                     Orders
                     </Link>
                 </li>
+                <li>
+                    <Link to="/totalStats">
+                    Stats
+                    </Link>
+                </li>
             </ul>
         </div>
     )
