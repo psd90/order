@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {firestore} from './../../firebase/util';
+import OrderStats from './../../components/OrderStats';
 
 
 
@@ -21,7 +22,11 @@ const AdminOrders = () => {
                             <div>
                                 <h1>
                                     {items.productName}
-                                    <br></br>--- Render Order total 
+                                    <br></br>
+                                    
+                                    <OrderStats 
+                                     productName = {items.productName}       
+                                     />
                                 </h1>
                             </div>
                         )
