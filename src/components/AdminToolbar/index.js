@@ -23,12 +23,17 @@ const AdminToolbar = props => {
                 </li>
                 <li>
                     <Link to="/stats">
-                    Orders
+                    Pack
                     </Link>
                 </li>
                 <li>
                     <Link to="/totalStats">
-                    Stats
+                    Prepare
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/date">
+                    Cut Off
                     </Link>
                 </li>
             </ul>

@@ -27,6 +27,7 @@ import Confirmation from './pages/Confirmation';
 import Order from './pages/Order';
 import Stats from './pages/Stats';
 import TotalStats from './pages/TotalStats';
+import DateEdit from './pages/DateEdit';
 import './default.scss';
 
 
@@ -121,6 +122,13 @@ dispatch(checkUserSession());
       <WithAdminAuth>
       <AdminLayout>
         <TotalStats />
+      </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/date" render ={() => (
+      <WithAdminAuth>
+      <AdminLayout>
+        <DateEdit />
       </AdminLayout>
       </WithAdminAuth>
       )} />
