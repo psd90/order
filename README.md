@@ -17,7 +17,7 @@ edit the menu and a cut off date <br>
 that users will need to order before.
 
 
-The admin should be able to see total <br>
+The admin will be able to see total <br>
 numbers for individual menu items to <br>
 prepare and then individual orders <br>
 for packaging.
