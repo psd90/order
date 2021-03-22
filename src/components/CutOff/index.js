@@ -23,7 +23,7 @@ const CutOff = () => {
 
     return (
         <div>
-            <h1>Get Your Order In Before <br /> : {s}</h1>
+            <h1>Get Your Orders In Before <br /> : {s}</h1>
         </div>
     )
 }

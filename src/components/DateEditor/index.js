@@ -21,7 +21,7 @@ const handleSubmit = e => {
 return(
     <div>
         <p>
-            Click on the box below to pick a cut off date 
+            Click on the empty box below
         </p>
     <div className="selectDate">
         <form onSubmit={handleSubmit}>
@@ -33,12 +33,9 @@ return(
         minDate ={new Date}
         isClearable
         />
+        <br /><br />
         <Button type="submit">
-              Set Date
-            </Button>
-            <br></br>
-            <Button onClick={() => history.push('/')}>
-                View New Date
+              Set New Date
             </Button>
         </form>
     </div>

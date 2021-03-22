@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
 import {checkUserSession} from './redux/User/user.actions';
+import {checkUserIsAdmin} from './Utils';
 //hoc
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 import {firestore} from './firebase/util';
 //components
 import AdminToolbar from './components/AdminToolbar';
+import CatchYou from './components/CatchYou';
 //layouts
 import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
@@ -28,8 +30,12 @@ import Order from './pages/Order';
 import Stats from './pages/Stats';
 import TotalStats from './pages/TotalStats';
 import DateEdit from './pages/DateEdit';
+import Delete from './pages/Delete';
 import './default.scss';
 
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser
+})
 
 const App = props => {
   const dispatch = useDispatch();
@@ -37,9 +43,10 @@ const App = props => {
     dispatch(checkUserSession());
   }, []);
 
-  console.log('current date: ' + new Date())
-
+  
+  const {currentUser} = useSelector(mapState);
   const [date, setDate] = useState([])
+ 
   useEffect(() => {   
     firestore
         .collection('date')
@@ -52,15 +59,15 @@ const App = props => {
          let s = ''
          if (date.date) {
            s = new Date(date.date.seconds*1000)
-           console.log('cut off date: ' + s)
          }
+         const isAdmin = checkUserIsAdmin(currentUser)
         
-//create a picture component to display message!
-    if (false){
-     return 'Sorry you missed this one please comeback next time. Thank you.'
+
+//create a picture component to display message! I
+    if ((new Date()>s) && !isAdmin){
+      // if (false){
+     return (<CatchYou />)
     }else{
-
-
   return (
     <div className="App">
       <AdminToolbar />
@@ -152,6 +159,13 @@ const App = props => {
       <WithAdminAuth>
       <AdminLayout>
         <DateEdit />
+      </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/delete" render ={() => (
+      <WithAdminAuth>
+      <AdminLayout>
+        <Delete />
       </AdminLayout>
       </WithAdminAuth>
       )} />
