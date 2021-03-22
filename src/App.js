@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
 import {checkUserSession} from './redux/User/user.actions';
 //hoc
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
-
+import {firestore} from './firebase/util';
 //components
 import AdminToolbar from './components/AdminToolbar';
 //layouts
@@ -34,8 +34,31 @@ import './default.scss';
 const App = props => {
   const dispatch = useDispatch();
   useEffect(() => {
-dispatch(checkUserSession());
-}, []);
+    dispatch(checkUserSession());
+  }, []);
+
+  console.log('current date: ' + new Date())
+
+  const [date, setDate] = useState([])
+  useEffect(() => {   
+    firestore
+        .collection('date')
+        .doc('1KXlQPbP2cxAMiTurXXf')
+        .onSnapshot(snapshot => (
+            setDate(snapshot.data())
+            ))
+         }, [])
+         
+         let s = ''
+         if (date.date) {
+           s = new Date(date.date.seconds*1000)
+           console.log('cut off date: ' + s)
+         }
+        
+//create a picture component to display message!
+    if (false){
+     return 'Sorry you missed this one please comeback next time. Thank you.'
+    }else{
 
 
   return (
@@ -136,6 +159,6 @@ dispatch(checkUserSession());
     </div>
   );
 }
-
+}
 
 export default App;

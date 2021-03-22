@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.scss';
+import CutOff from './../CutOff';
 import userIMG from './../../assets/user.png';
 
 const UserProfile = props => {
@@ -7,6 +8,8 @@ const UserProfile = props => {
   const { displayName } = currentUser;
 
   return (
+    <div>
+      <CutOff className="CutOff"/>
     <div className="userProfile">
       <ul>
         <li>
@@ -20,6 +23,7 @@ const UserProfile = props => {
           </span>
         </li>
       </ul>
+    </div>
     </div>
   );
 }
