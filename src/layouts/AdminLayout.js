@@ -22,11 +22,6 @@ const AdminLayout = props => {
           <VerticalNav>
             <ul>
               <li>
-                <Link to="/admin">
-                  Home
-                </Link>
-              </li>
-              <li>
                 <span className="signOut" onClick={() => signOut()}>
                   Sign Out
                 </span>

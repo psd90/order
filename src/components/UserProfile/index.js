@@ -8,8 +8,7 @@ const UserProfile = props => {
   const { displayName } = currentUser;
 
   return (
-    <div>
-      <CutOff className="CutOff"/>
+
     <div className="userProfile">
       <ul>
         <li>
@@ -23,7 +22,7 @@ const UserProfile = props => {
           </span>
         </li>
       </ul>
-    </div>
+    <CutOff />
     </div>
   );
 }

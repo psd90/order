@@ -18,12 +18,12 @@ const AdminToolbar = props => {
             <ul>
                 <li>
                     <Link to="/admin">
-                    Admin Hub
+                    Menu
                     </Link>
                 </li>
                 <li>
                     <Link to="/date">
-                    Cut Off
+                    Date
                     </Link>
                 </li>
                 <li>
@@ -37,8 +37,8 @@ const AdminToolbar = props => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/delete">
-                    Delete Orders
+                    <Link to="/deleteconfirm">
+                    Delete
                     </Link>
                 </li>
             </ul>

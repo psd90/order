@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {firestore} from './../../firebase/util';
-
+import './styles.scss'
 
 const CutOff = () => {
 
@@ -22,9 +22,13 @@ const CutOff = () => {
         
 
     return (
-        <div>
-            <h1>Get Your Orders In Before <br /> : {s}</h1>
-        </div>
+        
+            <div className="cutOff">
+                
+                    <h1>Get your orders in before <br /><br />  {s}</h1>
+            
+            </div>
+        
     )
 }
 export default CutOff

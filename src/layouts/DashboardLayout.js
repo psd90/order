@@ -22,11 +22,6 @@ const DashBoardLayout = props => {
           <VerticalNav>
             <ul>
               <li>
-                <Link to="/dashboard">
-                  Home
-                </Link>
-              </li>
-              <li>
                 <span className="signOut" onClick={() => signOut()}>
                   Sign Out
                 </span>

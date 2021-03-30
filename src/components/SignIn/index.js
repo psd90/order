@@ -7,9 +7,13 @@ import {emailSignInStart} from './../../redux/User/user.actions';
 import {Link, useHistory} from 'react-router-dom';
 import './styles.scss';
 
+
+
+
 const mapState = ({user}) => ({
     currentUser: user.currentUser
 })
+
 const SignIn = props => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -42,8 +46,8 @@ const SignIn = props => {
             headline: 'Login'
         };
         return (
-        <AuthWrapper {...configAuthWrapper}>
-
+            
+            <AuthWrapper {...configAuthWrapper}>
                 <div className="formWrap">
                     <form onSubmit = {handleSubmit}>
 
@@ -70,6 +74,14 @@ const SignIn = props => {
                             </Link>
                         </div>
                     </form>
+                    <div className="links">
+                        Don't have an account?
+                        <div className="signUp">
+                        <Button onClick={() => history.push('/registration')}>
+                            SignUp
+                        </Button>
+                        </div>
+                    </div>
                 </div>
              </AuthWrapper>
     );

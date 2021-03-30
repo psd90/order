@@ -58,7 +58,7 @@ const Header = props => {
                     {currentUser && [
                             <li>
                             <Link to="/dashboard">
-                             My Account
+                             My Orders
                             </Link>
                            </li>
                     ]}

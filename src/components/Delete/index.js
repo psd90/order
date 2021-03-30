@@ -1,18 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import {firestore} from './../../firebase/util';
-import Button from './../../components/Forms/Button';
+import Button from './../Forms/Button';
 
 const Delete = () => {
+    const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault();
+        
+        history.push('/refresh')
         firestore.collection('orders')
         .onSnapshot((snapshot) => {
             snapshot.docs.forEach((doc) => {
                 firestore.collection('orders').doc(doc.id).delete()
             })
           })
-    }
+}
 
 
 
@@ -21,7 +25,7 @@ const Delete = () => {
         <div>
             <form onSubmit={handleSubmit}>
             <Button type="submit">
-                DELETE ALL ORDERS
+                DELETE
             </Button>
             </form>
 

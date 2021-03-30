@@ -30,7 +30,9 @@ import Order from './pages/Order';
 import Stats from './pages/Stats';
 import TotalStats from './pages/TotalStats';
 import DateEdit from './pages/DateEdit';
-import Delete from './pages/Delete';
+import DeleteConfirm from './pages/DeleteConfirm';
+import OrdersDelete from './pages/OrdersDelete';
+import Refresh from './pages/Refresh';
 import './default.scss';
 
 const mapState = ({ user }) => ({
@@ -63,9 +65,7 @@ const App = props => {
          const isAdmin = checkUserIsAdmin(currentUser)
         
 
-//create a picture component to display message! I
-    if ((new Date()>s) && !isAdmin){
-      // if (false){
+    if ((new Date()>s) && !isAdmin){ 
      return (<CatchYou />)
     }else{
   return (
@@ -162,11 +162,23 @@ const App = props => {
       </AdminLayout>
       </WithAdminAuth>
       )} />
-      <Route path="/delete" render ={() => (
+      <Route path="/deleteconfirm" render ={() => (
       <WithAdminAuth>
       <AdminLayout>
-        <Delete />
+        <DeleteConfirm />
       </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/ordersdelete" render ={() => (
+      <WithAdminAuth>
+      <AdminLayout>
+        <OrdersDelete />
+      </AdminLayout>
+      </WithAdminAuth>
+      )} />
+      <Route path="/refresh" render ={() => (
+      <WithAdminAuth>
+        <Refresh />
       </WithAdminAuth>
       )} />
       </Switch>
