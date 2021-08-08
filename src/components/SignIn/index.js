@@ -4,6 +4,7 @@ import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
 import {emailSignInStart} from './../../redux/User/user.actions';
+import {emailSignIn} from './../../redux/User/user.sagas';
 import {Link, useHistory} from 'react-router-dom';
 import './styles.scss';
 
@@ -36,12 +37,8 @@ const SignIn = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(emailSignInStart({email, password}));
-            
+        dispatch(emailSignInStart({email, password}));   
     }
-
-    
-
         const configAuthWrapper = {
             headline: 'Login'
         };

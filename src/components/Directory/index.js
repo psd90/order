@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Menu from './../../assets/curry.jpg'
+import Menu from './../../assets/mdc.png';
 import CutOff from './../../components/CutOff';
 import './styles.scss';
 
@@ -8,7 +8,6 @@ import './styles.scss';
 const Directory = props => {
     return (
         <div className="directory">
-            <CutOff />
             <div className="wrap">
                 <Link to="/search">
             <div
@@ -17,9 +16,7 @@ const Directory = props => {
                     backgroundImage: `url(${Menu})`
                 }}
                 >
-                   <a> 
-                      View Menu
-                   </a> 
+                <CutOff />
                 </div>
                       </Link> 
             </div>

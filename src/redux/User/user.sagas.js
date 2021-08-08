@@ -25,7 +25,7 @@ export function* emailSignIn({payload:{email, password} }) {
                const {user} = yield auth.signInWithEmailAndPassword(email, password)
                yield getSnapshotFromUserAuth(user);
            }catch(err){
-               console.log(err)
+               alert(err.message.slice(0,18)+ 'and password are incorrect. Please try again or sign up below.')
            }
    }
 
@@ -83,6 +83,7 @@ export function* signUpUser({payload:{
         yield getSnapshotFromUserAuth(user, additionalData)   
     }catch(err){
         console.log(err)
+        alert(err.message + ' Please try again.')
     }
 
 }

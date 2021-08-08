@@ -9,7 +9,7 @@
         height: 100%;
 
         .logo {
-            width: 13.0rem;
+            width: 10.0rem;
             position: absolute;
             left: 10px;
             top: 50%;
@@ -33,9 +33,10 @@
             margin: 0;
 
             ul,ul li{
-                padding: 0;
-                margin: 0;
-                height: 100%;
+                padding-top: 2rem;
+                transform: translateX(-1rem);
+                width: 50%;
+  margin: 0 auto;
             }
             ul{
                 text-align: center;
