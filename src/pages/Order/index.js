@@ -37,7 +37,7 @@ const Order = () => {
   return (
     <div>
 
-      <Button onClick={()=>history.push.goBack()}>Go Back</Button>
+      <Button onClick={()=>history.goBack()}>Go Back</Button>
 
       <OrderDetails order={orderDetails} />
 
