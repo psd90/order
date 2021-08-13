@@ -19,7 +19,7 @@ const mapState = ({ user }) =>  ({
         const [displayName, setDisplayName] = useState('');
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
-        const [confirmPassword, setComfirmPassword] = useState('');
+        const [confirmPassword, setConfirmPassword] = useState('');
         const [errors, setErrors] = useState([]);
 
         useEffect(() =>{
@@ -41,7 +41,7 @@ const mapState = ({ user }) =>  ({
             setDisplayName('');
             setEmail('');
             setPassword('');
-            setComfirmPassword('');
+            setConfirmPassword('');
             setErrors([]);
         }
    
@@ -102,7 +102,7 @@ const mapState = ({ user }) =>  ({
                         name="confirmPassword"
                         value={confirmPassword}
                         placeholder="Confirm Password"
-                        handleChange={e => setComfirmPassword(e.target.value)}
+                        handleChange={e => setConfirmPassword(e.target.value)}
                         />
                         <Button type="submit">
                             Register

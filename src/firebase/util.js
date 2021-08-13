@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import { firebaseConfig } from './config'
@@ -10,8 +10,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 
-export const  FacebookProvider = new firebase.auth.FacebookAuthProvider();
-export const signInWithFacebook = () => auth.signInWithPopup(FacebookProvider);
+export const FacebookProvider = new firebase.auth.FacebookAuthProvider();
 
 
 

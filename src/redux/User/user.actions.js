@@ -47,5 +47,3 @@ export const resetUserState = () => ({
 type: userTypes.RESET_USER_STATE
 })
 
-
-
