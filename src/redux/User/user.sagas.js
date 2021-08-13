@@ -112,20 +112,6 @@ export function* onResetPasswordStart() {
     yield takeLatest(userTypes.RESET_PASSWORD_START, resetPassword)
 }
 
-export function* facebookSignIn() {
-    try {
-      const { user } = yield auth.signInWithPopup(FacebookProvider);
-      yield getSnapshotFromUserAuth(user);
-        console.log(user)
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  
-  export function* onFacebookSignInStart() {
-    yield takeLatest(userTypes.FACEBOOK_SIGN_IN_START, facebookSignIn);
-  }
-  
 
 
 export default function* userSagas() {
@@ -133,7 +119,6 @@ export default function* userSagas() {
                call(onCheckUserSession), 
                call(onSignOutUserStart),
                call(onSignUpUserStart),
-               call(onResetPasswordStart),
-               call(facebookSignIn)
+               call(onResetPasswordStart)
               ])
 }

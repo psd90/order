@@ -10,7 +10,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 
-export const  FacebookProvider = new firebase.auth.FacebookAuthProvider();
+
 
 
 
