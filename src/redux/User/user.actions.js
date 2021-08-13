@@ -47,3 +47,7 @@ export const resetUserState = () => ({
 type: userTypes.RESET_USER_STATE
 })
 
+export const facebookSignInStart = () => ({
+    type: userTypes.FACEBOOK_SIGN_IN_START
+  });
+

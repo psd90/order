@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import Button from './../Forms/Button';
 import FormInput from './../Forms/FormInput';
 import AuthWrapper from './../AuthWrapper';
-import {emailSignInStart} from './../../redux/User/user.actions';
+import {emailSignInStart, facebookSignInStart} from './../../redux/User/user.actions';
 import {Link, useHistory} from 'react-router-dom';
 import './styles.scss';
 
@@ -33,7 +33,9 @@ const SignIn = props => {
         setPassword('');
     } 
 
- 
+    const handleFacebookSignIn = () => {
+        dispatch(facebookSignInStart())
+    }
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(emailSignInStart({email, password}));   
@@ -71,6 +73,13 @@ const SignIn = props => {
                         </div>
                     </form>
                     <div className="links">
+                        <div className="socialSignin">
+                        <div className="row">
+                        <Button onClick={handleFacebookSignIn}>
+                            Sign in with Facebook
+                        </Button>
+                        </div>
+                        </div>
                         Don't have an account?
                         <div className="signUp">
                         <Button onClick={() => history.push('/registration')}>
