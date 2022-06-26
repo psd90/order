@@ -8,6 +8,7 @@ const Confirm = props => {
     return (
         <div className="directory">
             <div className="wrap">
+            <a onClick={() => {history.push('/dashboard')}}> 
             <div
                 className="item"
                 style ={{
@@ -15,12 +16,11 @@ const Confirm = props => {
                 }}
                 >
                     <h1>
-                        Your Order Has Been Submitted
+                       Thank you! Your Order Has Been Submitted
                     </h1>
-                   <a onClick={() => {history.push('/dashboard')}}> 
                       View Your Submitted Order
-                   </a> 
                 </div>
+            </a> 
             </div>
         </div>
     )

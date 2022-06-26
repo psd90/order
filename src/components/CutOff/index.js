@@ -22,13 +22,9 @@ const CutOff = () => {
         
 
     return (
-        
             <div className="cutOff">
-                
-                    <h1>Get your orders in before <br /><br />  {s}</h1>
-            
+                <h1>Get your orders in before {s}</h1>
             </div>
-        
     )
 }
 export default CutOff

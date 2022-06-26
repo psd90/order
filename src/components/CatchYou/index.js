@@ -6,7 +6,7 @@ const CatchYou = () => {
         <div>
             <Login />
         <h1>
-   Sorry you missed this one, please comeback next time. Thank you.
+            Sorry you missed this one, please comeback next time. Thank you.
         </h1>
         </div>
     )
