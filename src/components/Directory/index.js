@@ -18,7 +18,7 @@ const Directory = props => {
                 >
                 <CutOff />
                 </div>
-                      </Link> 
+                </Link> 
             </div>
         </div>
     )

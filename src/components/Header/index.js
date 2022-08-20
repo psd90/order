@@ -34,34 +34,13 @@ const Header = props => {
         <header className="header">
             <div className="wrap">
                 <div className="logo">
-                    <Link to="/">
+                    <Link to="/search">
                     <img src={Logo} alt="Dhillons"/>
                     </Link>
                 </div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/search">
-                                Menu
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-
+                
                 <div className="callToActions">
                 <ul>
-                    <li>
-                        <Link to="/cart">
-                        Cart ({totalNumOfCartItems})
-                        </Link>
-                    </li>
-                    {currentUser && [
-                            <li>
-                            <Link to="/dashboard">
-                             My Orders
-                            </Link>
-                           </li>
-                    ]}
                     {!currentUser && [
                     
                         <li>
@@ -70,9 +49,8 @@ const Header = props => {
                             </Link>
                         </li>
                     
-                ]}
+                    ]}
                 </ul>
-                    
                 </div>
             </div>
         </header>

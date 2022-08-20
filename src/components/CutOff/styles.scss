@@ -1,7 +1,7 @@
 .cutOff {
-    position: fixed; 
-    bottom:0%;
-    margin: 2rem;    
+    z-index: 999;
+    position: absolute;
+    margin: 2rem;
     background: rgba( 110, 172, 140, 0.5 );
     box-shadow: 0 8px 32px 0 rgba(255, 198, 160, 0.37);
     backdrop-filter: blur( 3rem );
@@ -14,5 +14,21 @@
         text-align: center;
         font-size: 242%;
         color: rgb(255, 255, 255);
+    }
+    h2{
+        text-align: center;
+        color: rgba(255, 127, 80, 0.501);
+    }
+    h3{
+        font-size: 300%;
+        color: coral;
+    }
+    button{
+        border-radius: 10px;
+        background-color: transparent;
+        padding: 5rem;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
     }
 }

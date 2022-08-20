@@ -19,11 +19,19 @@ const CutOff = () => {
         if (date.date) {
           s = new Date(date.date.seconds*1000).toLocaleDateString('en-GB')
         }
+     const closeWindow = e => {
+        e.currentTarget.style.display = 'none'
+        
+     }
         
 
     return (
             <div className="cutOff">
-                <h1>Get your orders in before {s}</h1>
+                <button onClick={closeWindow}>
+                <h1>Please make sure your orders are submitted before the cut-off date below</h1>
+                <h3>{s}</h3>
+                <h2>Close this window to continue</h2>
+                </button>
             </div>
     )
 }
