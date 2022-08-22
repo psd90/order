@@ -1,16 +1,12 @@
 .btn{
-    display: block;
-    width: 100%;
-    max-width: 25rem;
-    margin: auto;
-    padding: 1rem;
-    background: black;
-    color: white;
-    font-size: 1.7rem;
-    line-height: 1;
-    font-weight: 300;
-    text-transform: uppercase;
-    border: 0;
-    outline: none;
+    margin: 2rem;
+    padding: .3rem;
+    padding-right: 0.5rem;
+    transform: scale(2);
+    background-color: rgba(0, 0, 0, 0.682);
+    color: rgba($color: #ff990a, $alpha: 1);
     cursor: pointer;
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.044);
 }

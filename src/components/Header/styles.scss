@@ -1,7 +1,7 @@
 .header{
+    background: white;
     height: 12rem;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.2);
     .wrap{
         position: relative;
         max-width: 1450px;
@@ -11,11 +11,7 @@
         .logo {
             width: 10.0rem;
             position: absolute;
-            left: 45%;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            transform: translateY(-50%);
+            padding-top: 1rem;
 
             img{
                 display:block;

@@ -1,8 +1,9 @@
 .products {
   display: block;
   width: 100%;
-  padding: 0;
   margin: 2rem 0;
+  text-align: center;
+
 
   .productResults {
     display: flex;
@@ -12,9 +13,11 @@
 }
 
 .product {
-  width: 33.333333333333333%;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.098);
+  width: 100%;
   margin: 0 auto 2rem;
-  padding: 0 10px;
+  padding: 3rem 100px 1rem;
+  max-width: 500px;
 
   .thumb {
     display: block;
@@ -63,7 +66,7 @@
         }
 
         .addToCart {
-          margin: 2rem 0 0 0;
+          transform: translateX(25rem) translateY(-5rem);
         }
       }
     }

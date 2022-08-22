@@ -3,17 +3,12 @@ import {
   TableContainer, Table, TableHead,
   TableRow, TableBody, TableCell
 } from '@material-ui/core';
-import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 
 const columns = [
   {
     id: 'orderCreatedDate',
     lable: 'Order Date'
-  },
-  {
-    id: 'documentID',
-    lable: 'Order Reference'
   },
   {
     id: 'orderTotal',
@@ -32,7 +27,7 @@ const formatText = (columnName, columnValue) => {
     case 'orderTotal':
       return `£${columnValue}`;
     case 'orderCreatedDate':
-      return moment(columnValue.nano).format('DD/MM/YYYY')
+      return ((new Date(columnValue.seconds * 1000)).toString()).slice(0,25);
     default:
       return columnValue;
   }
