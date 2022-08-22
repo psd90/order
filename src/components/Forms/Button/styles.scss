@@ -8,5 +8,14 @@
     cursor: pointer;
     box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
     border-radius: 1rem;
+    transition-duration: 1s;
+    transition-delay:.1s;
     border: 1px solid rgba(0, 0, 0, 0.044);
+}
+
+.btn:hover{
+    color: rgba($color: #6dffc55a, $alpha: 0.7);
+  transition-duration: 1s;
+    transition-delay:.1s;
+    background-color: rgba(0, 0, 0, 0.882);;
 }

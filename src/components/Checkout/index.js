@@ -99,14 +99,14 @@ const Checkout = () => {
                                         <tr>
                                             <td className='menu'>
                                                <Button onClick={() => history.push('/search')}>
-                                               <i class='fa fa-bars'></i> Menu
+                                               <i class='fa fa-bars'></i>  &nbsp; Menu
                                                 </Button> 
                                             </td>
                                             <td className="send">
                                             {cartTotal > 0 &&
                                             <form onSubmit={handleFormSubmit}>
                                                 <Button type="submit">
-                                                <i class='fa fa-check'></i>
+                                                <i class='fa fa-check'></i> &nbsp;
                                                 Send Order : £ {cartTotal}
                                                 </Button>
                                             </form>

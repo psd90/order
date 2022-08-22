@@ -12,6 +12,7 @@
             width: 10.0rem;
             position: absolute;
             padding-top: 1rem;
+            padding-left: 1rem;
 
             img{
                 display:block;
@@ -20,7 +21,10 @@
                 height: 100%;
             }
         }
-
+        .fa{
+            transition-duration: 1s;
+            transition-delay:.1s;
+          }
         nav{
             display: block;
             width: 100%;

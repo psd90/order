@@ -42,7 +42,10 @@
   color: rgba($color: #9b5a005a, $alpha: 1);
 }
 
-
+.fa{
+  transition-duration: .5s;
+  transition-delay:.1s;
+}
 
   .cartBtn {
     margin: 1rem;
@@ -63,7 +66,7 @@
   padding-top: 15rem;
 }
 .send{
-  transform: translateX(10rem);
+  transform: translateX(1rem);
 }
 .menu{
   transform: translateX(5rem);
@@ -97,13 +100,16 @@
     padding-top: 1rem;
   }
   .send{
-    transform: translateX(5rem);
+    transform: translateX(20%);
   }
   .menu{
-    transform: translateX(2rem);
+    transform: translateX(8%);
   }
   .delete{
-    transform: translateX(40%) translateY(-15rem);
+    max-width: 50px;
+    float: right;
+    margin-right: 10rem;
+    transform: translateY(-15rem);
   }
   .editCart{
     transform: translateX(-2rem);
@@ -116,4 +122,27 @@ form {
     display: block;
     width: 100%;
     padding: 2rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .editCart{
+    transform: scale(66%) translateX(-25%);
+  }
+  .send{
+    transform: scale(66%);
+    padding: 0rem;
+  }
+  .menu{
+    transform: translateX(-8%) scale(66%);
+  }
+  .delete{
+    transform: scale(66%) translateX(-1rem);
+    float: left;
+  }
+}
+
+.fa:hover{
+  color: rgba($color: #19ffa35a, $alpha: 0.7);
+  transition-duration: 1s;
+    transition-delay:.1s;
 }

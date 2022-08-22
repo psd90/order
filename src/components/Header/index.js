@@ -53,7 +53,7 @@ const Header = () => {
                     {currentUser && [
                             <li>
                             <Link to="/dashboard">
-                            More
+                            <i class="fa fa-user" aria-hidden="true"></i>
                             </Link>
                            </li>
                     ]}

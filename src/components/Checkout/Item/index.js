@@ -6,7 +6,6 @@ const Item = (product) => {
     const dispatch = useDispatch();
     const {
         productName,
-        productThumbnail,
         productPrice,
         quantity,
         documentID
