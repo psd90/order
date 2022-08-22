@@ -37,8 +37,11 @@ const ProductResults = ({ }) => {
           name: 'Show all',
           value: ''
       }, {
-          name: 'Curry',
-          value: 'curry'
+        name: 'Starters',
+        value: 'starters'
+      }, {
+          name: 'Mains',
+          value: 'mains'
       }, {
           name: 'Extras',
           value: 'extras'
@@ -73,10 +76,6 @@ const ProductResults = ({ }) => {
 
   return (
     <div className="products">
-        <h1>
-          Products
-        </h1>
-
         <FormSelect {...configFilters}/>
 
 
@@ -95,9 +94,6 @@ const ProductResults = ({ }) => {
           );
         })}
         </div>
-        {!isLastPage && (
-        <LoadMore {...configLoadMore}/>
-        )}
     </div>
   );
 };

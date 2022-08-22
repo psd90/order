@@ -5,6 +5,7 @@ import Menu from './../../assets/curry.jpg';
 
 const Confirm = props => {
     const history = useHistory();
+    console.log(props)
     return (
         <div className="directory">
             <div className="wrap">
@@ -18,7 +19,7 @@ const Confirm = props => {
                     <h1>
                        Thank you! Your Order Has Been Submitted
                     </h1>
-                      View Your Submitted Order
+                      View Your Submitted OrderS
                 </div>
             </a> 
             </div>

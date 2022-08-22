@@ -9,14 +9,16 @@
     }
   
     select {
+      color: rgb(255, 156, 80);
+      border-radius: 1rem;
+      background-color: rgba(0, 0, 0, 0.664);
       display: block;
       width: auto;
-      float: left;
       font-size: 1.5rem;
       line-height: 1;
       font-weight: 400;
       text-align: left;
-      padding: 10px 0px;
+      padding: 1rem 1rem;
       margin: 10px auto;
       border: none;
       outline: none;

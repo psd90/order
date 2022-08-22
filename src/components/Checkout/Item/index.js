@@ -11,6 +11,7 @@ const Item = (product) => {
         quantity,
         documentID
     } = product;
+    const totalItemCost = (productPrice * quantity).toFixed(2)
 
     const handleRemoveCartItem = (documentID) => {
         dispatch(
@@ -27,6 +28,7 @@ const Item = (product) => {
     }
 
     const handleReduceItem = (product) => {
+        if (quantity > 1)
         dispatch(
             reduceCartItem(product)
         )
@@ -35,31 +37,28 @@ const Item = (product) => {
         <table className="cartItem" border="0" cellSpacing="0" cellPadding="10">
             <tbody>
                 <tr>
-                    <td>
-                        <img src={productThumbnail} alt={productName}/>
-                    </td>
-                    <td>
+                    <td className='info'>
                         {productName}
                     </td>
-                    <td>
+                    <td className='info'>
+                        £{totalItemCost}
+                    </td>
+                    <td className='editCart'>
                         <span className="cartBtn"
                         onClick={() => handleReduceItem(product)}>
-                        {` < `}
+                        <i class="fa fa-minus-circle fa-3x" aria-hidden="true" ></i>
                         </span>
-                        <span>
-                            {quantity}
+                        <span className='quantity'>
+                        {quantity} 
                         </span>
                         <span className="cartBtn"
-                        onClick={() => handleAddProduct(product)}>
-                        {` > `}
+                        onClick={() => handleAddProduct(product)}> 
+                        <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
                         </span>
                     </td>
-                    <td>
-                        £{productPrice}
-                    </td>
-                    <td align="center">
+                    <td align="center" className='delete'>
                     <span className="cartBtn" onClick={() => handleRemoveCartItem(documentID)}>
-                        X
+                    <i class="fa fa-trash fa-3x" aria-hidden="true"></i>
                     </span>
                     </td>
                 </tr>

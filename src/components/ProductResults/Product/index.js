@@ -31,34 +31,26 @@ const Product = (product) => {
 
   return (
     <div className="product">
-      <div className="thumb">
-        <Link to={`/product/${documentID}`}>
-          <img src={productThumbnail} alt={productName} />
-        </Link>
-      </div>
-
       <div className="details">
         <ul>
           <li>
             <span className="name">
-              <Link to={`/product/${documentID}`}>
              {productName}
-             </Link>
             </span>
           </li>
           <li>
             <span className="price">
               £{productPrice}
             </span>
-          </li>
-          <li>
             <div className ="addToCart">
             <Button {...configAddToCartButton} onClick={() => handleAddToCart(product)}>
-              Add to Cart
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
             </Button>
             </div>
           </li>
         </ul>
+          
+          
       </div>
 
     </div>

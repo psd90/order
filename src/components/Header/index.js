@@ -1,30 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {signOutUserStart} from './../../redux/User/user.actions';
-import {selectCartItemsCount} from './../../redux/Cart/cart.selectors';
-import {useSelector, useDispatch} from 'react-redux';
+import {selectCartItemsCount, selectCartTotal} from './../../redux/Cart/cart.selectors';
+import {useSelector} from 'react-redux';
 import {checkUserIsAdmin} from './../../Utils';
 import './styles.scss';
-import Logo from './../../assets/Logo.png'; 
+import mdc from './../../assets/mdc.png'; 
 
 const mapState= (state) => ({
     currentUser: state.user.currentUser,
-    totalNumOfCartItems: selectCartItemsCount(state)
+    totalNumOfCartItems: selectCartItemsCount(state),
+    cartTotal: selectCartTotal(state)
 });
 
-const Header = props => {
-    const dispatch = useDispatch();
-    const {currentUser, totalNumOfCartItems} = useSelector(mapState);
+const Header = () => {
+    const {currentUser, totalNumOfCartItems, cartTotal} = useSelector(mapState);
     const isAdmin = checkUserIsAdmin(currentUser)
-    const signOut = () => {
-        dispatch(signOutUserStart());
-    }
+    const total = cartTotal.toFixed(2)
     if(isAdmin) return (
         <div className="header">
             <div className="wrap">
             <div className="logo">
                     <Link to="/">
-                    <img src={Logo} alt="Dhillons"/>
+                    <img src={mdc} alt="Dhillons"/>
                     </Link>
                 </div>
        </div>
@@ -35,12 +32,32 @@ const Header = props => {
             <div className="wrap">
                 <div className="logo">
                     <Link to="/search">
-                    <img src={Logo} alt="Dhillons"/>
+                    <img src={mdc} alt="Dhillons"/>
                     </Link>
                 </div>
                 
                 <div className="callToActions">
                 <ul>
+                <li>
+                        <Link to="/cart">
+                                {totalNumOfCartItems > 0  &&
+                            <div>
+                                £ {total}
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                ({totalNumOfCartItems})
+                                </div>
+                            }
+                                </Link>
+
+                </li>
+
+                    {currentUser && [
+                            <li>
+                            <Link to="/dashboard">
+                            More
+                            </Link>
+                           </li>
+                    ]}
                     {!currentUser && [
                     
                         <li>
