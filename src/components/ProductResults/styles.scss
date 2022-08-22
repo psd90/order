@@ -1,33 +1,27 @@
 .products {
-  display: block;
-  width: 100%;
   margin: 2rem 0;
-  text-align: center;
 
 
   .productResults {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     margin: 3rem -10px 0;
   }
 }
 
+
 .product {
+  display: flex;
+  flex-direction: row;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.098);
-  width: 100%;
   margin: 0 auto 2rem;
-  padding: 3rem 100px 1rem;
+  padding: 3rem 1rem 1rem;
   max-width: 500px;
 
-  .thumb {
-    display: block;
-    width: 100%;
-
-    img {
-      display: block;
-      width: 100%;
-      margin: 0;
-    }
+  .productImg {
+    max-width: 55%;
+    max-height: 55%;
   }
 
   .details {
@@ -60,13 +54,16 @@
         }
 
         .price {
-          font-size: 1.6rem;
+          font-size: 2.6rem;
           line-height: 1;
           font-weight: 400;
         }
 
         .addToCart {
-          transform: translateX(25rem) translateY(-5rem);
+          transform: translateX(-2rem) scale(70%);
+          display: flex;
+          flex-direction: row;
+          min-width: 200px;
         }
       }
     }

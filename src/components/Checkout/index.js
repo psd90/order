@@ -31,7 +31,7 @@ const handleSaveOrder = order => {
     });
   };
 
-const errorMessage = 'You have no items, please add some items to your basket' 
+const errorMessage = 'You have no items in your basket' 
 const Checkout = () => {
     console.log(auth.currentUser)
     const history = useHistory();
@@ -119,7 +119,7 @@ const Checkout = () => {
                     </tbody>
                 </table>
             ) : (
-                <p>
+                <p onClick={()=>history.push('/search')}>
                  {errorMessage}
                 </p>
             )}

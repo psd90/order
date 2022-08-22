@@ -58,7 +58,6 @@
             -webkit-transform: translateY(-50%);
             -moz-transform: translateY(-50%);
             transform: translateY(-50%);
-
             ul, li {
                 margin: 0;
                 padding: 0;
@@ -67,7 +66,7 @@
             li {
                 display: inline-block;
                 list-style: none;
-                margin-right: 1.6rem;
+                margin-right: 2rem;
 
                 &:last-child {
                     margin-right: 0;

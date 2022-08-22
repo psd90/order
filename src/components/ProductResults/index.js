@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import { fetchProductsStart } from './../../redux/Products/products.actions';
 import Product from './Product';
-import LoadMore from './../LoadMore';
 import FormSelect  from './../Forms/FormSelect';
 import './styles.scss';
 

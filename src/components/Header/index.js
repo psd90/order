@@ -11,7 +11,6 @@ const mapState= (state) => ({
     totalNumOfCartItems: selectCartItemsCount(state),
     cartTotal: selectCartTotal(state)
 });
-
 const Header = () => {
     const {currentUser, totalNumOfCartItems, cartTotal} = useSelector(mapState);
     const isAdmin = checkUserIsAdmin(currentUser)
@@ -42,9 +41,9 @@ const Header = () => {
                         <Link to="/cart">
                                 {totalNumOfCartItems > 0  &&
                             <div>
-                                £ {total}
+                                £ {total} &nbsp;
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                ({totalNumOfCartItems})
+                                &nbsp; ({totalNumOfCartItems})
                                 </div>
                             }
                                 </Link>

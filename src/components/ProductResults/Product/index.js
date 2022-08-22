@@ -44,15 +44,15 @@ const Product = (product) => {
             </span>
             <div className ="addToCart">
             <Button {...configAddToCartButton} onClick={() => handleAddToCart(product)}>
-            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+            <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart
             </Button>
             </div>
           </li>
         </ul>
           
-          
       </div>
 
+      <img className="productImg" src={productThumbnail}></img>
     </div>
   )}
   
