@@ -3,7 +3,7 @@ import { firestore } from '../../firebase/util';
 
 
 
-const OrderCard = ({orderTotal, orderUserID, orderItems}) => {
+const OrderCard = ({orderTotal, orderUserID, orderItems, telephoneNumber}) => {
 
 const [userData, setUsername] = useState([])
 
@@ -25,20 +25,25 @@ const userName = userData.displayName
             <ul>
                 <li>
                     <h1>
-                        {userName}
+                        {userName} &nbsp;
                     </h1>
+                    <h3>
+                        Mobile &nbsp; 
+                        {telephoneNumber}
+                    </h3>
                 </li>
                 <li>     
                 {orderItems.map((orderItems)=>{
                     return (
-                    <div><h1>{orderItems.quantity} : {orderItems.productName}</h1></div>
+                    <div><h3>{orderItems.quantity} : {orderItems.productName}</h3>
+                    </div>
                     )}
                     )}
                 </li>
                 <li>
-                    <h1>
+                    <h3>
                      £{orderTotal}
-                    </h1>
+                    </h3>
                 </li>
                 <br></br>
             </ul>

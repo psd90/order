@@ -10,10 +10,6 @@ const UserProfile = props => {
     <div className="userProfile">
       <ul>
         <li>
-          <div className="img">
-          </div>
-        </li>
-        <li>
           <span className="displayName">
             {displayName && displayName}
           </span>

@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles.scss';
 import {useHistory} from 'react-router-dom';
-import Menu from './../../assets/curry.jpg';
 
 const Confirm = props => {
     const history = useHistory();
@@ -10,18 +9,21 @@ const Confirm = props => {
         <div className="directory">
             <div className="wrap">
             <a onClick={() => {history.push('/dashboard')}}> 
-            <div
-                className="item"
-                style ={{
-                    backgroundImage: `url(${Menu})`
-                }}
-                >
-                    <h1>
-                       Thank you! Your Order Has Been Submitted
-                    </h1>
-                      View Your Submitted OrderS
-                </div>
+            <div className='thanks'>
+            <h3>
+                View Orders
+            </h3>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            </div>
             </a> 
+            <div className='nice'>
+            <h1>
+                Thank you, your order has been submitted.
+            </h1>
+            <h3>
+                Click on the thumbs-up below to view your orders.
+            </h3>
+            </div>
             </div>
         </div>
     )

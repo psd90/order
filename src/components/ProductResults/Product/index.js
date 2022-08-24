@@ -11,7 +11,8 @@ const Product = (product) => {
     documentID,
     productThumbnail,
     productName,
-    productPrice
+    productPrice,
+    productDesc
   } = product;
 
   if (!documentID || !productThumbnail || !productName ||
@@ -30,7 +31,7 @@ const Product = (product) => {
     }
 
   return (
-    <div className="product">
+    <div className="product" title={productDesc.slice(3,productDesc.length-5)}>
       <div className="details">
         <ul>
           <li>
@@ -44,14 +45,13 @@ const Product = (product) => {
             </span>
             <div className ="addToCart">
             <Button {...configAddToCartButton} onClick={() => handleAddToCart(product)}>
-            <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart
+            <i class="fa fa-cart-plus" aria-hidden="true"></i> &nbsp;Add To Cart
             </Button>
             </div>
           </li>
         </ul>
           
       </div>
-
       <img className="productImg" src={productThumbnail}></img>
     </div>
   )}

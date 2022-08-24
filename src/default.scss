@@ -73,6 +73,9 @@ a, a:hover{
       height: 100%;
       z-index: 1;
       border-right: 1px solid #d3d3d3;
+      .fa{
+        transform: translateY(-20rem);
+      }
     }
   
     .content {
@@ -101,6 +104,11 @@ a, a:hover{
         width: 100%;
         border: none;
         margin-bottom: 2.5rem;
+        .fa{
+          float: right;
+          transform: translateX(-500%);
+        }
       }
     }
   }
+

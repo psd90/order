@@ -1,3 +1,6 @@
+.userDetails{
+    position: fixed;
+}
 .header{
     background: white;
     height: 12rem;
@@ -24,6 +27,7 @@
         .fa{
             transition-duration: 1s;
             transition-delay:.1s;
+            cursor: pointer;
           }
         nav{
             display: block;

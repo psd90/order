@@ -33,6 +33,7 @@ import DateEdit from './pages/DateEdit';
 import DeleteConfirm from './pages/DeleteConfirm';
 import OrdersDelete from './pages/OrdersDelete';
 import Refresh from './pages/Refresh';
+import Success from './pages/Success';
 import './default.scss';
 
 const mapState = ({ user }) => ({
@@ -93,11 +94,9 @@ const App = props => {
         </MainLayout>
       )}/>
       <Route path ="/cart" render={() => (
-        <WithAuth>
         <MainLayout>
           <Cart />
         </MainLayout>
-        </WithAuth>
       )}/>
       <Route path ="/confirmation" render={() =>(
         <MainLayout>
@@ -118,6 +117,11 @@ const App = props => {
       <Route path="/recovery" render ={() => (
       <MainLayout>
         <Recovery />
+      </MainLayout>
+      )} />
+      <Route path="/success" render ={() => (
+      <MainLayout>
+        <Success />
       </MainLayout>
       )} />
       <Route path="/dashboard" render ={() => (

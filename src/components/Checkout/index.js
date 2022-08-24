@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { firestore } from './../../firebase/util';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
@@ -6,6 +6,7 @@ import {selectCartItems, selectCartTotal, selectCartItemsCount,} from './../../r
 import {clearCart} from './../../redux/Cart/cart.actions'
 import { auth } from './../../firebase/util';
 import {createStructuredSelector} from 'reselect';
+import FormInput from '../Forms/FormInput';
 import './styles.scss';
 import Button from './../Forms/Button';
 import Item from './Item';
@@ -18,7 +19,7 @@ const mapSate = createStructuredSelector({
 })
 const handleSaveOrder = order => {
     return new Promise((resolve, reject) => {
-      firestore
+        firestore
         .collection('orders')
         .doc()
         .set(order)
@@ -36,19 +37,24 @@ const Checkout = () => {
     console.log(auth.currentUser)
     const history = useHistory();
     const dispatch = useDispatch();
+    const [telephone, setTelephone] = useState('');
     const {cartItems, total} = useSelector(mapSate);
-    const cartTotal = total.toFixed(2)
-    
-    
+    const cartTotal = total.toFixed(2);
+   
     
     
     const handleFormSubmit = e => {
+        if (!auth.currentUser) {
+            alert('Please Login to submit your order')
+            history.push('login')
+        }
         e.preventDefault();
         const timestamps = new Date();
         const configOrder = {
             orderUserID: auth.currentUser.uid,
             orderCreatedDate: timestamps,
             orderTotal: total,
+            telephoneNumber: telephone,
             orderItems: cartItems.map(item => {
                 const { documentID, productThumbnail, productName,
                     productPrice, quantity } = item;
@@ -63,10 +69,15 @@ const Checkout = () => {
                 })
                 
             }
-            
+            console.log(typeof(telephone))
+            const mobileNumberRegex = /^(?:(?:00)?44|0)7(?:[45789]\d{2}|624)\d{6}$/;
+            if (telephone.replace(mobileNumberRegex)) {
             handleSaveOrder(configOrder)
             history.push('/confirmation')
             dispatch(clearCart())
+            } else {
+                alert('Please enter a valid mobile number to complete your order')
+            }
         }
             
             return (
@@ -102,6 +113,13 @@ const Checkout = () => {
                                                <i class='fa fa-bars'></i>  &nbsp; Menu
                                                 </Button> 
                                             </td>
+                                            <FormInput 
+                                                type="tel"
+                                                name="telephone"
+                                                value={telephone}
+                                                placeholder="Mobile Number"
+                                                handleChange={e => setTelephone(e.target.value)}
+                                            />
                                             <td className="send">
                                             {cartTotal > 0 &&
                                             <form onSubmit={handleFormSubmit}>

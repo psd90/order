@@ -1,0 +1,18 @@
+.thanks{
+    transform: scale(10);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 100px;
+    h3{
+        font-size: 2px;
+    }
+    h3:hover{
+        color: rgb(123, 255, 220);
+    }
+}
+.nice{
+    left: 10%;
+    padding: 2rem;
+    position: fixed;
+}

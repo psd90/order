@@ -11,3 +11,9 @@ margin: .5rem auto 0;
         color: black;
     }
 }
+.login, .signUp{
+    text-align: center;
+    button{
+        min-width: 30%;
+    }
+}

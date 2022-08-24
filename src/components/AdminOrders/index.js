@@ -16,8 +16,9 @@ const AdminOrders = () => {
      
     return (
         <div className="adminOrders">
-            {orders.map(({orderTotal, orderUserID, orderItems}) => (
+            {orders.map(({orderTotal, orderUserID, orderItems, telephoneNumber}) => (
                 <OrderCard 
+                telephoneNumber= {telephoneNumber}
                 orderTotal = {orderTotal}
                 orderUserID = {orderUserID}
                 orderItems = {orderItems}

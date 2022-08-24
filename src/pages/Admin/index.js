@@ -193,22 +193,6 @@ const Admin = props => {
         </table>
       </td>
     </tr>
-    <tr>
-      <td> 
-        <table border= "0" cellPadding="10" cellSpacing="0">
-          <tbody>
-            <tr>
-            <td>
-            {!isLastPage && (
-              <LoadMore {...configLoadMore}/>
-            )}
-            </td>
-            </tr>
-            </tbody>
-        </table>
-      </td>
-    </tr>
-   
   </tbody>
 </table>
 

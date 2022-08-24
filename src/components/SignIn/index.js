@@ -39,12 +39,10 @@ const SignIn = props => {
         e.preventDefault();
         dispatch(emailSignInStart({email, password}));   
     }
-        const configAuthWrapper = {
-            headline: 'Login'
-        };
+        
         return (
             
-            <AuthWrapper {...configAuthWrapper}>
+            <AuthWrapper>
                 <div className="formWrap">
                     <form onSubmit = {handleSubmit}>
 
@@ -62,9 +60,11 @@ const SignIn = props => {
                         placeholder="Password"
                         handleChange={e => setPassword(e.target.value)}
                         />
+                        <div className="login">
                         <Button type="submit">
                             LogIn
                         </Button>
+                        </div>
                         <div className="links">
                             <Link to="/recovery">
                                 Forgot your password?
